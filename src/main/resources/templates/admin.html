@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #343a40; /* Светло-серый */
+            color: #333; /* Темно-серый */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #ffffff; /* Ярко-синий */
+            text-align: center;
+        }
+        button {
+            padding: 15px 30px; /* Немного увеличили размеры кнопки */
+            font-size: 18px; /* Увеличили размер текста внутри кнопки */
+            background-color: #00bdff; /* Ярко-синий */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff; /* Белый */
+            transition: background-color 0.3s;
+            display: block;
+            margin-top: 20px; /* Добавили отступ сверху */
+        }
+        button:hover {
+            background-color: #02a5da; /* Темно-синий при наведении */
+        }
+        .logout-button {
+            position: absolute;
+            bottom: 20px; /* Отступ от нижнего края */
+            right: 20px; /* Отступ от правого края */
+        }
+    </style>
+</head>
+<body>
+<h1>Admin Panel</h1>
+<form action="/admin/users" method="get">
+    <button type="submit">Show all users</button>
+</form>
+<div class="logout-button">
+    <a th:href="@{/logout}" class="button">Logout</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #343a40; /* Темно-серый */
+            color: #fff; /* Белый */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 2px solid #fff; /* Белый */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #fff; /* Белый */
+        }
+
+        th {
+            background-color: #fff; /* Белый */
+            color: #343a40; /* Темно-серый */
+        }
+
+        td {
+            background-color: #f8f9fa; /* Светло-серый */
+            color: #333; /* Темно-серый */
+        }
+
+        tr:nth-child(even) {
+            background-color: #e9ecef; /* Серый для четных строк */
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #00bdff; /* Ярко-синий */
+            color: #fff; /* Белый */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 10px auto;
+        }
+
+        button:hover {
+            background-color: #02a5da; /* Темно-синий при наведении */
+        }
+        .logout-button {
+            position: absolute;
+            bottom: 20px; /* Отступ от нижнего края */
+            right: 20px; /* Отступ от правого края */
+        }
+    </style>
+</head>
+<body>
+<h1>User List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Department</th>
+        <th>Salary</th>
+        <th>Username</th>
+        <th>Action</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Здесь будут данные о пользователях -->
+    <!-- Пример данных -->
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}" style="border: 1px solid #343a40;"></td>
+        <td th:text="${user.name}" style="border: 1px solid #343a40;"></td>
+        <td th:text="${user.surname}" style="border: 1px solid #343a40;"></td>
+        <td th:text="${user.department}" style="border: 1px solid #343a40;"></td>
+        <td th:text="${user.salary}" style="border: 1px solid #343a40;"></td>
+        <td th:text="${user.username}" style="border: 1px solid #343a40;"></td>
+        <td style="border: 1px solid #343a40;">
+            <form th:action="@{/admin/editUser/{id}(id=${user.id})}" method="get">
+                <button type="submit">Edit</button>
+            </form>
+        </td>
+        <td style="border: 1px solid #343a40;">
+            <form th:action="@{/admin/deleteUser/{id}(id=${user.id})}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div style="text-align: center;">
+    <form action="/admin" method="get" style="display: inline-block;">
+        <button type="submit">Back</button>
+    </form>
+    <form action="/admin/addUser" method="get" style="display: inline-block;">
+        <button type="submit">Add a new user</button>
+    </form>
+</div>
+<div class="logout-button">
+    <a th:href="@{/logout}" class="button">Logout</a>
+</div>
+</body>
+</html>

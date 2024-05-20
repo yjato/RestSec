@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to my wonky app!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #343a40; /* Светло-серый */
+            color: #ffffff; /* Темно-серый */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ffffff; /* Ярко-синий */
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .login-button {
+            padding: 15px 30px;
+            background-color: #00bdff; /* Зеленый */
+            color: #fff; /* Белый */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+        .login-button:hover {
+            background-color: #02a5da; /* Темно-зеленый при наведении */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to my wonky app!</h1>
+    <p>This is the index page. Enjoy the weirdness!</p>
+    <a href="/login" class="login-button">Login</a>
+</div>
+</body>
+</html>

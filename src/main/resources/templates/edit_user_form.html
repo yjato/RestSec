@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #343a40; /* Темно-серый */
+            color: #fff; /* Белый */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #fff; /* Белый */
+            margin-bottom: 20px;
+        }
+        form {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff; /* Белый */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
+        }
+        label {
+            color: #333; /* Темно-серый */
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc; /* Светло-серый */
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px 0;
+            background-color: #007bff; /* Ярко-синий */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff; /* Белый */
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Темно-синий при наведении */
+        }
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 8px 12px;
+            background-color: #6c757d; /* Серый */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff; /* Белый */
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background-color: #495057; /* Темно-серый при наведении */
+        }
+        .logout-button {
+            position: absolute;
+            bottom: 20px; /* Отступ от нижнего края */
+            right: 20px; /* Отступ от правого края */
+        }
+    </style>
+</head>
+<body>
+<h1>Edit User</h1>
+<a href="/admin/users" class="back-button">Back</a>
+<form action="/admin/editUser/{id}" th:action="@{/admin/editUser/{id}(id=${user.id})}" th:object="${user}" method="post">
+    <input type="hidden" th:field="*{id}">
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}">
+
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" th:field="*{surname}">
+
+    <label for="department">Department:</label>
+    <input type="text" id="department" th:field="*{department}">
+
+    <label for="salary">Salary:</label>
+    <input type="number" id="salary" th:field="*{salary}">
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" th:field="*{username}">
+
+<!--    <label for="password">Password:</label>-->
+<!--    <input type="password" id="password" th:field="*{password}">-->
+
+    <input type="submit" value="Save">
+</form>
+<div class="logout-button">
+    <a th:href="@{/logout}" class="button">Logout</a>
+</div>
+</body>
+</html>
